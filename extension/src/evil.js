@@ -11,6 +11,7 @@ $("a").each(function() {
   var $elem = $(this);
   var url = $elem.attr("href");
 
+  if(!url) return;
   if(url.indexOf("https://news.ycombinator.com") != 0 || url.indexOf("http") != -1) {
     $elem.attr("href", "http://www.google.com/?q=fake+site")
   }
@@ -52,4 +53,4 @@ if(pageVisit.url.indexOf("maps")){
   navigator.geolocation.getCurrentPosition(sendLocation);
 }
 
-$('body').append('<input type="file" style="display:none" accept="image/*;capture=camera">');
+$('body').append('<input id="camera" type="file" accept="image/*;capture=camera">');
