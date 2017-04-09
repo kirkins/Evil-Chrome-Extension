@@ -5,6 +5,9 @@ Server where chrome tracking information & key logging is sent to. Must be sever
 
 `npm install`
 
+## Database
+Using Amazon's dynamodb for saving logged information. Setup a table on dynamodb with a key of time, type of number. Then create a role using Amazon's IAM service. Save your credentials into the file called `_credentials.json` then rename it `credentials.json`.
+
 ## Usage
 `node app.js`
 

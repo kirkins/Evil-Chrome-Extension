@@ -1,5 +1,5 @@
 # sensitive information in file below
-config.js
+credentials.json
 # Logs
 logs
 *.log

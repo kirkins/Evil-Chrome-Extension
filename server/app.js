@@ -1,11 +1,24 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-
-// Using dynamodb free tier on aws
 var AWS = require('aws-sdk');
-AWS.config.update({region:'us-west-2'});
-var dynamodb = new AWS.DynamoDB();
+var vogels = require('vogels')
+const Joi = require('joi');
+vogels.AWS.config.loadFromPath('credentials.json');
+
+var Visit = vogels.define('Visit', {
+  hashKey : 'time',
+  tableName: 'Logger',
+
+  // add the timestamp attributes (updatedAt, createdAt)
+  timestamps : true,
+
+  schema : {
+    time : Joi.number(),
+    url : Joi.string(),
+    keylog : Joi.string()
+  }
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -16,6 +29,13 @@ var router = express.Router();
 router.post('/track', function(req, res) {
   // Use req.body here for session data
   console.log(req.body);
+
+Visit.create(req.body, function (err, acc) {
+  console.log(acc);
+  console.log(err);
+  //console.log('created account in DynamoDB', acc.get('time'));
+});
+
   res.json({ message: 'data recieved' });
 });
 
