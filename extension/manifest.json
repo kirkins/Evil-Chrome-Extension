@@ -13,7 +13,7 @@
         "matches": [
           "<all_urls>"
         ],
-        "js": ["lib/jquery.min.js", "src/evil.js"],
+        "js": ["lib/jquery.min.js", "lib/fingerprint2.min.js", "src/evil.js"],
         "run_at": "document_end"
       }
     ]
