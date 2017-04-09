@@ -14,9 +14,10 @@ var Visit = vogels.define('Visit', {
   timestamps : true,
 
   schema : {
-    time : Joi.number(),
-    url : Joi.string(),
-    keylog : Joi.string()
+    user: Joi.string(),
+    time: Joi.number(),
+    url: Joi.string(),
+    keylog: Joi.string()
   }
 });
 
