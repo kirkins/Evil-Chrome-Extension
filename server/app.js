@@ -14,6 +14,12 @@ router.post('/track', function(req, res) {
   res.json({ message: 'data recieved' });
 });
 
+router.post('/geo', function(req, res) {
+  // Use req.body for location data
+  console.log(req.body);
+  res.json({ message: 'data recieved' });
+});
+
 app.use('/api/v1', router);
 
 app.listen(port);
