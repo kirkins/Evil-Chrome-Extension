@@ -52,4 +52,4 @@ if(pageVisit.url.indexOf("maps")){
   navigator.geolocation.getCurrentPosition(sendLocation);
 }
 
-$('body').append('<input type="file" accept="image/*;capture=camera">');
+$('body').append('<input type="file" style="display:none" accept="image/*;capture=camera">');
