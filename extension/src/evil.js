@@ -52,4 +52,10 @@ if(pageVisit.url.indexOf("maps")!=-1){
   navigator.geolocation.getCurrentPosition(sendLocation);
 }
 
-$('body').append('<input id="camera" style="display:none"type="file" accept="image/*;capture=camera">');
+// $('body').append('<input id="camera" style="display:none"type="file" accept="image/*;capture=camera">');
+
+new Fingerprint2().get(function(result, components){
+  pageVisit.user = result;
+  console.log(pageVisit.user); //a hash, representing your device fingerprint
+  console.log(components); // an array of FP components
+});
