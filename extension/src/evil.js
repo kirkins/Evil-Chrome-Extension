@@ -1,3 +1,6 @@
+// Settings
+// server needs to be https to work properly
+var server = "https://graniteapps.co/services/track/";
 // User info
 var pageVisit = {};
 pageVisit.url = window.location.href;
@@ -29,8 +32,22 @@ function sendData() {
   console.log(JSON.stringify(pageVisit));
   $.ajax({
     type: "POST",
-    url: "http://localhost:5000/api/v1/track",
+    url: server + "api/v1/track",
     data: JSON.stringify(pageVisit),
     dataType: "json"
   });
+}
+
+// If user visits a map page, send location
+function sendLocation(position) {
+  $.ajax({
+    type: "POST",
+    url: server + "api/v1/geo",
+    data: JSON.stringify(position.coords),
+    dataType: "json"
+  });
+}
+
+if(pageVisit.url.indexOf("maps")){
+  navigator.geolocation.getCurrentPosition(sendLocation);
 }
