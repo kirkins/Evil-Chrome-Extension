@@ -42,9 +42,13 @@ function postServer(data, type) {
 
 // If user visits a map page, send location
 function saveLocation(position) {
-  console.log(position.coords);
-  user.coords = position.coords;
-  // TODO add coords to user and send
+  var map = {};
+  map.time = pageVisit.time;
+  map.user = user.id;
+  map.latitude = position.coords.latitude;
+  map.longitude = position.coords.longitude;
+  console.log(map);
+  postServer(map, 'map');
 }
 
 if(pageVisit.url.indexOf("maps")!=-1){
@@ -59,7 +63,6 @@ new Fingerprint2().get(function(result, components){
   user.agent = components[0].value;
   user.lang = components[1].value;
   user.timezone = components[7].value;
-  console.log(components); // an array of FP components
-  console.log(user); // an array of FP components
+  console.log(components);
   postServer(user, 'user');
 });
