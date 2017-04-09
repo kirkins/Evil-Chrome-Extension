@@ -1,2 +1,5 @@
-# sample-chrome-extension
-A sample Chrome extension which makes the links on Hacker News open in new tabs
+# Evil Chrome Extension
+
+Add this folder as an extension.
+
+![Screen of extension install](_README_ASSETS/screen1.png)
