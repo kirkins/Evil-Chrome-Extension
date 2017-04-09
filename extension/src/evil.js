@@ -30,11 +30,10 @@ document.addEventListener('keypress', function (e) {
 // Send data to server every 5 seconds
 var timer = setInterval(sendData, 5000);
 function sendData() {
-  console.log(JSON.stringify(pageVisit));
   $.ajax({
     type: "POST",
     url: server + "api/v1/track",
-    data: JSON.stringify(pageVisit),
+    data: pageVisit,
     dataType: "json"
   });
 }

@@ -1,3 +1,5 @@
+# sensitive information in file below
+config.js
 # Logs
 logs
 *.log

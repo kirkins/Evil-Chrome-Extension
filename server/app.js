@@ -2,6 +2,11 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+// Using dynamodb free tier on aws
+var AWS = require('aws-sdk');
+AWS.config.update({region:'us-west-2'});
+var dynamodb = new AWS.DynamoDB();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
