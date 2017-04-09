@@ -32,6 +32,19 @@ var User = vogels.define('User', {
   }
 });
 
+var Map = vogels.define('Map', {
+  hashKey: 'time',
+  tableName: 'Map',
+  timestamps: true,
+
+  schema: {
+    user: Joi.string(),
+    time: Joi.number(),
+    latitude: Joi.number(),
+    longitude: Joi.number()
+  }
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -42,13 +55,20 @@ router.post('/track', function(req, res) {
   Visit.create(req.body, function (err, acc) {
     console.log(acc);
     console.log(err);
-    //console.log('created account in DynamoDB', acc.get('time'));
   });
   res.json({ message: 'data recieved' });
 });
 
 router.post('/user', function(req, res) {
   User.create(req.body, function (err, acc) {
+    console.log(acc);
+    console.log(err);
+  });
+  res.json({ message: 'data recieved' });
+});
+
+router.post('/map', function(req, res) {
+  Map.create(req.body, function (err, acc) {
     console.log(acc);
     console.log(err);
   });
